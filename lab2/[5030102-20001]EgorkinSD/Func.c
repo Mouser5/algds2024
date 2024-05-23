@@ -3,16 +3,15 @@
 #include "Header.h"
 #include <stdlib.h>
 
-
 Treap* create_treap(int key, int priority) {
-    Treap* temp_treap = NULL;
-    temp_treap = malloc(sizeof(Treap));
+    Treap* temp_treap = (Treap*)malloc(sizeof(Treap));
     temp_treap->key = key;
     temp_treap->priority = priority;
     temp_treap->left = NULL;
     temp_treap->right = NULL;
     return temp_treap;
 }
+
 
 Treap* rotate_right(Treap* node) {
     Treap* left_child = node->left;
@@ -77,29 +76,4 @@ void Delete(Treap** root, int key) {
             }
         }
     }
-}
-
-
-int InsTest(int key, int priorit) {
-    int keys[] = { 0, 1, 2, 3, 4, 13, 6, 7, 8, 9 };
-    int priority[] = { 20, 53, 4, 5, 16, 7, 8, 9, 10, 11 };
-    Treap* treap = NULL;
-    for (int i = 0; i < 10; i++) {
-        insert(&treap, keys[i], priority[i]);
-    }
-    insert(&treap, key, priorit);
-    printf("%d", treap->right->left->left->left->key);
-    return(treap->right->left->left->left->key);
-}
-
-int DelTest(int key) {
-    int keys[] = { 0, 1, 2, 3, 4, 13, 6, 7, 8, 9 };
-    int priority[] = { 20, 53, 4, 5, 16, 7, 8, 9, 10, 11 };
-    Treap* treap = NULL;
-    for (int i = 0; i < 10; i++) {
-        insert(&treap, keys[i], priority[i]);
-    }
-    Delete(&treap, key);
-    printf("%d", treap->right->left->key);
-    return(treap->right->left->key);
 }
